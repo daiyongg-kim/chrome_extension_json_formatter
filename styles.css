@@ -1,0 +1,536 @@
+/* Global Styles */
+:root {
+    --dark-bg: #2B3544;
+    --dark-secondary: #3A4455;
+    --dark-border: #4A5568;
+    --dark-text: #E2E8F0;
+    --dark-text-secondary: #A0AEC0;
+
+    --light-bg: #FFFFFF;
+    --light-secondary: #F7FAFC;
+    --light-border: #E2E8F0;
+    --light-text: #2D3748;
+    --light-text-secondary: #718096;
+
+    --primary-blue: #3B82F6;
+    --primary-green: #10B981;
+    --primary-purple: #8B5CF6;
+    --primary-red: #EF4444;
+    --primary-teal: #14B8A6;
+    --primary-orange: #F97316;
+    --primary-yellow: #F59E0B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 800px;
+    min-height: 800px;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--dark-bg);
+    color: var(--dark-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-theme {
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-theme .header {
+    background: linear-gradient(135deg, var(--light-secondary) 0%, var(--light-bg) 100%);
+    border-bottom-color: var(--light-border);
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.tagline {
+    font-size: 13px;
+    color: var(--dark-text-secondary);
+}
+
+.light-theme .tagline {
+    color: var(--light-text-secondary);
+}
+
+/* Navigation Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--dark-secondary);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-theme .tabs {
+    background: var(--light-secondary);
+    border-bottom-color: var(--light-border);
+}
+
+.tab-button {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--dark-text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.light-theme .tab-button {
+    color: var(--light-text-secondary);
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.light-theme .tab-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.tab-button.active {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 12px;
+    background: var(--primary-yellow);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+
+.theme-toggle:hover {
+    opacity: 0.9;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    flex: 1;
+    padding: 15px;
+    padding-bottom: 5px;
+    overflow-y: auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--primary-green);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--primary-red);
+    color: white;
+}
+
+.btn-upload {
+    background: var(--primary-purple);
+    color: white;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.file-upload {
+    cursor: pointer;
+}
+
+.file-upload:hover .btn-upload {
+    opacity: 0.9;
+}
+
+/* Editor Container */
+.editor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.editor-section h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.light-theme .editor-section h2 {
+    color: var(--light-text);
+}
+
+.editor {
+    background: var(--dark-secondary);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    min-height: 250px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.light-theme .editor {
+    background: var(--light-secondary);
+    border-color: var(--light-border);
+}
+
+.code-input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: var(--dark-text);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+}
+
+.light-theme .code-input {
+    color: var(--light-text);
+}
+
+.output-area,
+.input-area {
+    padding: 10px;
+    background: var(--dark-secondary);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    min-height: 250px;
+    height: 250px;
+    max-height: 350px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.input-area {
+    width: 100%;
+    color: var(--dark-text);
+    resize: none;
+    outline: none;
+}
+
+.light-theme .output-area,
+.light-theme .input-area {
+    background: var(--light-secondary);
+    border-color: var(--light-border);
+}
+
+.light-theme .input-area {
+    color: var(--light-text);
+}
+
+.placeholder {
+    color: var(--dark-text-secondary);
+    font-style: italic;
+}
+
+.light-theme .placeholder {
+    color: var(--light-text-secondary);
+}
+
+/* Converter Options */
+.converter-options {
+    margin-bottom: 20px;
+}
+
+.converter-options h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.conversion-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.conversion-type {
+    padding: 8px 12px;
+    background: var(--dark-secondary);
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.light-theme .conversion-type {
+    background: var(--light-secondary);
+    border-color: var(--light-border);
+    color: var(--light-text);
+}
+
+.conversion-type:hover {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.conversion-type.active {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Status Bar */
+.status-bar {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
+    display: none;
+}
+
+.status-bar.success {
+    display: block;
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--primary-green);
+}
+
+.status-bar.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--primary-red);
+}
+
+/* Donation Section */
+.donation-section {
+    padding: 15px;
+    margin: 10px 0;
+    background: var(--dark-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--dark-border);
+    text-align: center;
+}
+
+.light-theme .donation-section {
+    background: var(--light-secondary);
+    border-color: var(--light-border);
+}
+
+.donation-text {
+    color: var(--dark-text-secondary);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.light-theme .donation-text {
+    color: var(--light-text-secondary);
+}
+
+.donation-buttons {
+    margin-bottom: 10px;
+}
+
+.coffee-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background: var(--primary-yellow);
+    color: var(--dark-bg);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.coffee-btn:hover {
+    background: #E59500;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.amount-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.amount-btn {
+    padding: 6px 14px;
+    background: var(--dark-bg);
+    color: var(--dark-text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+    transition: all 0.2s;
+    border: 1px solid var(--dark-border);
+}
+
+.light-theme .amount-btn {
+    background: var(--light-bg);
+    color: var(--light-text-secondary);
+    border-color: var(--light-border);
+}
+
+.amount-btn:hover {
+    background: var(--primary-yellow);
+    color: var(--dark-bg);
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dark-text-secondary);
+    border-top: 1px solid var(--dark-border);
+}
+
+.light-theme .footer {
+    color: var(--light-text-secondary);
+    border-top-color: var(--light-border);
+}
+
+.footer p {
+    margin: 3px 0;
+}
+
+.website-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.website-link:hover {
+    color: var(--primary-teal);
+    transform: scale(1.05);
+    display: inline-block;
+}
+
+.light-theme .website-link {
+    color: var(--primary-blue);
+}
+
+.light-theme .website-link:hover {
+    color: var(--primary-teal);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+.light-theme ::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-border);
+    border-radius: 4px;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+    background: var(--light-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-text-secondary);
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+    background: var(--light-text-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.status-bar.success,
+.status-bar.error {
+    animation: fadeIn 0.3s ease-out;
+}

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "JSON Formatter",
-  "version": "1.0",
-  "description": "Format and beautify JSON data with syntax highlighting",
+  "name": "JSON Parser Pro",
+  "version": "2.0",
+  "description": "Parse, Format, Validate JSON, XML and Convert between data formats",
   "permissions": [
     "activeTab",
     "storage"
