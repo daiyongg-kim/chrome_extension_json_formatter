@@ -207,8 +207,7 @@ If you find this extension helpful, please:
 ## 📞 Contact
 
 - **Issues**: [GitHub Issues](https://github.com/your-username/json-formatter-extension/issues)
-- **Email**: your-email@example.com
-- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
+- **Email**: daiyongg.kim@gmail.com
 
 ---
 
